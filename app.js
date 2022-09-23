@@ -84,8 +84,9 @@ app.get("/:this", function (req,res) {
 })
 app.get("/posts/:this", function (request, respond) {
   
-  const path = request.params.this;
+  const path = _.upperCase(request.params.this);
   List.findOne({name:path}, function (err,result) {
+    console.log(result.name)
     if (err) {
       console.log("error found")
     } else {
@@ -101,7 +102,7 @@ app.post("/compose", function (request, respond) {
   const texts = request.body.text;
 
   list1  = new List({
-    name:texts,
+    name:_.upperCase(texts),
     items:head
   })
 

@@ -3,7 +3,13 @@
     <p><%= welcome %></p>
     
    <% for (var i = 0; i<words.length; i++) { %>
-        <h1><%= words[i].name %></h1>
-        <p><%= words[i].truncated_text %> <a href="./posts/<%= words[i].name %>"> Continue reading</a></p>
+     <% if (words[i].items >= 150) { %>
+          <h1><%= words[i].name %></h1>
+        <p><%= words[i].items%></p>
+        <% } else { %>
+          <h1><%= words[i].name %></h1>
+        <p><%= words[i].truncated_text %>.... <a href="./posts/<%= words[i].name %>"> Continue reading</a></p>
+        <% } %>
+        
    <% } %>
 <%- include("./partials/footer") -%>
